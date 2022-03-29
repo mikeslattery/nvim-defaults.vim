@@ -7,8 +7,13 @@
 # This is used to maintain .vimrc
 # to set vim defaults similar to nvim defaults.
 
+
+has() { command -v "$@" >/dev/null 2>&1; }
+
 # fedora
-vim() { vimx "$@"; }
+if has('vimx') && ! has('vim')
+  vim() { vimx "$@"; }
+fi
 
 cleanit() {
   cat "$1" | sed -r '

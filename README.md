@@ -55,10 +55,10 @@ runtime! plugin/.vimrc
 
 In summary, I can't make Vim into Neovim.
 
-* Make use of `if has('nvim')` to conditionally skip code in your configs that only will work in Neovim.
+* Make use of `if has('nvim')` to conditionally skip code in your configuration that only will work in Neovim.
 * Lua is not supported.
-* Plugins written specifically to only work for Neovim, will continue to not work for Vim.
-* Don't expect Vim to magically work exactly like Neovim.  There are a lot of things out of my control.
+* Plugins written specifically to only work for Neovim, will continue to *not* work for Vim.
+* Don't expect Vim to magically work exactly like Neovim.  There are a lot of things out of our control.
 * This is not tested with Windows.
 
 ## Reporting Issues and Contributing
@@ -66,9 +66,8 @@ In summary, I can't make Vim into Neovim.
 * Please do!   I'd love improvments in the `README.md`.
 * If you report a good issue, I'll likely turn it around quickly.  I use this project daily.
 * The scope of this project is limited to making stock Vim 7, 8 more like nightly Neovim.  No more; no less.
-* Before starting on a pull request, create an issue, if none, to make sure it's something I'll be willing to merge.
-* I do not test in environments other than Linux + Tmux.  I may not pick up tickets I can't test for, but I will accept pull requests.
-* If you notice no commits in a while, run `nvim-diff.sh` to see if there options that need to be added to `.vimrc`.  Write an issue or pull request.
+* I do not test in environments other than Linux + Tmux.  I may need assistance with tickets specific to other environments.
+* If you notice no commits in a while, run `nvim-diff.sh` to see if options need to be added.  Write an issue or pull request.
 
 ## References and Technical Notes
 
