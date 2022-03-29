@@ -28,7 +28,7 @@ mv .vimrc .config/nvim/init.vim
 curl -LO https://raw.githubusercontent.com/mikeslattery/nvim-defaults.vim/master/plugin/.vimrc
 ```
 
-### Alternate Ways to Install
+### Alternate ways to install
 
 If using gVim for Windows, run in PowerShell:
 
@@ -50,6 +50,24 @@ runtime! plugin/.vimrc
 
 * `UpdateDefaults` - To get updates
 * `MapQ` - For full support of [Q mapping](https://neovim.io/doc/user/repeat.html#Q).
+
+## Caveats
+
+In summary, I can't make Vim into Neovim.
+
+* Make use of `if has('nvim')` to conditionally skip code in your configs that only will work in Neovim.
+* Lua is not supported.
+* Plugins written specifically to only work for Neovim, will continue to not work for Vim.
+* Don't expect Vim to magically work exactly like Neovim.  There are a lot of things out of my control.
+* This is not tested with Windows.
+
+## Reporting Issues and Contributing
+
+* Please do!   I'd love improvments in the `README.md`.
+* If you report a good issue, I'll likely turn it around quickly.  I use this project daily.
+* The scope of this project is limited to making stock Vim 7, 8 more like nightly Neovim.  No more; no less.
+* Before starting on a pull request, create an issue, if none, to make sure it's something I'll be willing to merge.
+* I do not test in environments other than Linux + Tmux.  I may not pick up tickets I can't test for, but I will accept pull requests.
 
 ## References and Technical Notes
 
