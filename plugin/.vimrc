@@ -1,16 +1,22 @@
 " This .vimrc sets Neovim's defaults for Vim
 " then it loads Neovim's init.vim
 
-if has('nvim') || exists('g:loaded_nvim_defaults')
-  " Put this function in your init.vim,
-  " in case you stop using this plugin, but still need it
-  function! Stdpath(id)
-    return stdpath(a:id)
-  endfunction
+if exists('g:loaded_nvim_defaults')
   finish
 endif
 
 let g:loaded_nvim_defaults = 1
+
+if has('nvim')
+  function! Stdpath(id)
+    return stdpath(a:id)
+  endfunction
+
+  command! MapQ :
+  command! UpdateDefaults :
+  finish
+endif
+
 
 " OPTIONS
 " :help nvim-defaults

@@ -48,8 +48,10 @@ cleaned() {
   # this isn't efficient, but who care?
 }
 
-vim  -u NONE -c 'source ~/.vimrc' +'redir! > /tmp/vs.txt | silent set! all | redir END | qa'
-nvim -u NONE                      +'redir! > /tmp/ns.txt | silent set! all | redir END | qa'
+vim  -u NONE -c 'source plugin/.vimrc' \
+  +'redir! > /tmp/vs.txt | silent set! all | redir END | qa'
+nvim -u NONE \
+  +'redir! > /tmp/ns.txt | silent set! all | redir END | qa'
 
 diff -u0 <(cleaned /tmp/vs.txt /tmp/ns.txt) <(cleaned /tmp/ns.txt /tmp/vs.txt) | \
   sed '/^@@/d' | \
