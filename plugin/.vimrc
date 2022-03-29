@@ -1,5 +1,3 @@
-"exec" ~/.config/nvim/init.vim "$@"
-
 " This .vimrc sets NeoVim's defaults for Vim
 " then it loads NeoVim's init.vim
 
@@ -198,7 +196,7 @@ function! RecordAndStop()
 endfunction
 
 command! MapQ noremap q :call RecordAndStop()<cr>
-noremap Q <Cmd>execute 'normal! @'.g:qreg<cr>
+noremap Q :execute 'normal! @'.g:qreg<cr>
 
 " DEFAULT PLUGINS
 
@@ -225,14 +223,3 @@ endif
 if &exrc && filereadable('.nvimrc')
   source .nvimrc
 endif
-
-" See also:
-" https://github.com/noahfrederick/vim-neovim-defaults/blob/master/plugin/neovim_defaults.vim
-" https://neovim.io/doc/user/starting.html#startup
-" https://neovim.io/doc/user/vim_diff.html
-" https://github.com/vim/vim/blob/master/runtime/defaults.vim
-" https://github.com/neovim/neovim/blob/master/src/nvim/os/stdpaths.c
-" Options were partially determined by running ~/.config/dotfiles/nvim-diff.sh
-" TODO:
-" default-autocmds
-" partial lua support (hard)

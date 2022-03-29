@@ -58,4 +58,4 @@ runtime! plugin/.vimrc
 * <https://neovim.io/doc/user/vim_diff.html>
 * <https://github.com/vim/vim/blob/master/runtime/defaults.vim>
 * <https://github.com/neovim/neovim/blob/master/src/nvim/os/stdpaths.c>
-* Options were partially determined by running `bin/nvim-diff.sh`
+* Options were partially determined by running `nvim-diff.sh`
