@@ -6,6 +6,7 @@ Sets options in Vim to the sames as [NeoVim's defaults](https://neovim.io/doc/us
 
 * NeoVim `set` values
 * True color support in Tmux with `termguicolors`
+* `runtimepath` extended for NeoVim directory structure
 * Set `$XDG_*` values
 * `Stdpath()` function equivalent to NeoVim's `stdpath()`
 * NeoVim default mappings, including `Q`
