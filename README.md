@@ -1,15 +1,15 @@
-# NeoVim Defaults For Vim
+# Neovim Defaults For Vim
 
-Sets options in Vim to the sames as [NeoVim's defaults](https://neovim.io/doc/user/vim_diff.html).
+Sets options in Vim to the sames as [Neovim's defaults](https://neovim.io/doc/user/vim_diff.html).
 
 ## Features
 
-* NeoVim `set` values
+* Neovim `set` values
 * True color support in Tmux with `termguicolors`
-* `runtimepath` extended for NeoVim directory structure
+* `runtimepath` extended for Neovim directory structure
 * Set `$XDG_*` values
-* `Stdpath()` function equivalent to NeoVim's `stdpath()`
-* NeoVim default mappings, including `Q`
+* `Stdpath()` function equivalent to Neovim's `stdpath()`
+* Neovim default mappings, including `Q`
 * Default plugins (Man, matchit, syntax)
 
 ## But Why?

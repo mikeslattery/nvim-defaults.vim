@@ -1,5 +1,5 @@
-" This .vimrc sets NeoVim's defaults for Vim
-" then it loads NeoVim's init.vim
+" This .vimrc sets Neovim's defaults for Vim
+" then it loads Neovim's init.vim
 
 if has('nvim') || exists('g:loaded_nvim_defaults')
   " Put this function in your init.vim,
@@ -150,14 +150,14 @@ if ! executable('nvim')
   let &directory = s:datadir . '/swap//'
   let &undodir   = s:datadir . '/undo//'
 else
-  " Vim/NeoVim have different file formats
+  " Vim/Neovim have different file formats
   let &directory = s:datadir . '/vimswap//'
   let &undodir   = s:datadir . '/vimundo//'
 endif
 
 let &viminfofile.=s:datadir . '/viminfo'
 
-" NeoVim creates directories if they don't exist
+" Neovim creates directories if they don't exist
 function! s:MakeDirs()
   for dir in [&backupdir, &directory, &undodir, &viewdir]
     call mkdir(dir, "p")
