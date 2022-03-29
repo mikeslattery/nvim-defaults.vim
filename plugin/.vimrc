@@ -210,7 +210,7 @@ if exists(":Man") != 2
   runtime! ftplugin/man.vim
 endif
 
-command! UpdateDefaults !curl -LO https://raw.githubusercontent.com/mikeslattery/nvim-defaults.vim/master/.vimrc
+command! UpdateDefaults !curl -L https://raw.githubusercontent.com/mikeslattery/nvim-defaults.vim/master/plugin/.vimrc -o ~/.vimrc
 
 " LOAD init.vim
 
