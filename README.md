@@ -12,7 +12,7 @@ Sets options in Vim to the sames as [Neovim's defaults](https://neovim.io/doc/us
 * Neovim default mappings, including `Q`
 * Default plugins (Man, matchit, syntax)
 
-## But Why?
+### But Why?
 
 * When remoting into a server that doesn't have `nvim` installed
 * Prefer to use Vim, but want more sensible defaults
@@ -46,12 +46,14 @@ Plug 'mikeslattery/nvim-defaults.vim'
 runtime! plugin/.vimrc
 ```
 
-## Commands
+### Editor Commands
 
 * `UpdateDefaults` - To get updates
 * `MapQ` - For full support of [Q mapping](https://neovim.io/doc/user/repeat.html#Q).
 
-## Caveats
+## More Details
+
+### Caveats
 
 In summary, I can't make Vim into Neovim.
 
@@ -61,7 +63,7 @@ In summary, I can't make Vim into Neovim.
 * Don't expect Vim to magically work exactly like Neovim.  There are a lot of things out of our control.
 * This is not tested with Windows.
 
-## Reporting Issues and Contributing
+### Reporting Issues and Contributing
 
 * Please do!   I'd love improvments in the `README.md`.
 * If you report a good issue, I'll likely turn it around quickly.  I use this project daily.
@@ -69,7 +71,7 @@ In summary, I can't make Vim into Neovim.
 * I do not test in environments other than Linux + Tmux.  I may need assistance with tickets specific to other environments.
 * If you notice no commits in a while, run `nvim-diff.sh` to see if options need to be added.  Write an issue or pull request.
 
-## References and Technical Notes
+### References and Technical Notes
 
 * <https://github.com/noahfrederick/vim-neovim-defaults>
 * <https://github.com/noahfrederick/vim-neovim-defaults/blob/master/plugin/neovim_defaults.vim>
