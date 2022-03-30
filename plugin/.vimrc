@@ -7,13 +7,14 @@ endif
 
 let g:loaded_nvim_defaults = 1
 
+command! UpdateDefaults !curl -L https://raw.githubusercontent.com/mikeslattery/nvim-defaults.vim/master/plugin/.vimrc -o ~/.vimrc
+
 if has('nvim')
   function! Stdpath(id)
     return stdpath(a:id)
   endfunction
 
   command! MapQ :
-  command! UpdateDefaults :
   finish
 endif
 
@@ -161,11 +162,12 @@ else
   let &undodir   = s:datadir . '/vimundo//'
 endif
 
-let &viminfofile.=s:datadir . '/viminfo'
+let s:shadadir   = s:datadir  . '/shada'
+let &viminfofile.= s:shadadir . '/viminfo'
 
 " Neovim creates directories if they don't exist
 function! s:MakeDirs()
-  for dir in [&backupdir, &directory, &undodir, &viewdir]
+  for dir in [&backupdir, &directory, &undodir, &viewdir, s:shadadir]
     call mkdir(dir, "p")
   endfor
 endfunction
@@ -175,8 +177,8 @@ autocmd VimEnter * call s:MakeDirs()
 let s:configdir   = Stdpath('config')
 let s:pathprefix  = s:configdir . ',' . s:datadir . '/site,'
 let s:pathpostfix = ',' . s:configdir . '/after,' . s:datadir . '/site/after'
-let &packpath     = s:pathprefix . &packpath .    s:pathpostfix
-let &runtimepath  = s:pathprefix . &runtimepath . s:pathpostfix
+let &packpath     = substitute(s:pathprefix . &packpath .    s:pathpostfix, ','.$HOME.'\/\.vim\(/after\)\?', '', 'g')
+let &runtimepath  = substitute(s:pathprefix . &runtimepath . s:pathpostfix, ','.$HOME.'\/\.vim\(/after\)\?', '', 'g')
 
 " DEFAULT-MAPPINGS
 " :help default-mappings
@@ -215,8 +217,6 @@ endif
 if exists(":Man") != 2
   runtime! ftplugin/man.vim
 endif
-
-command! UpdateDefaults !curl -L https://raw.githubusercontent.com/mikeslattery/nvim-defaults.vim/master/plugin/.vimrc -o ~/.vimrc
 
 " LOAD init.vim
 

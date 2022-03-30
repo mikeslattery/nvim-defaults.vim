@@ -11,7 +11,7 @@
 has() { command -v "$@" >/dev/null 2>&1; }
 
 # fedora
-if has('vimx') && ! has('vim')
+if has vimx && ! has vim; then
   vim() { vimx "$@"; }
 fi
 
@@ -25,9 +25,11 @@ cleanit() {
     s|/tmp/\.mount_nvim[^/]*/|/|g;
     s|/vimswap|/swap|;
     s|/vimundo|/undo|;
+    s|^(shadafile)=$|\1=~/.local/share/nvim/shada/main.shada|;
 
     # Naming differences
-    s|^shada|viminfo|;
+    s|main.shada|viminfo|g;
+    s|shada|viminfo|g;
 
     # option values not in both
     /^cpoptions=/ { s/_//; };
@@ -44,6 +46,18 @@ cleanit() {
     /^highlight=/ d;
     /^printexpr=/ d;
     /^helpfile=/ d;
+
+    # Vim has odd defaults, but we do not care
+    # comment out for more truthful diff.
+    s/backupdir=\.,/backupdir=/;
+
+    # paths can be different
+    s|/etc/xdg/nvim(/after)?,||g;
+    s|/usr/(local/)?share/n?vim(/vimfiles)?(/vim82)?(/runtime)?(/site)?(/after)?,||g;
+    s|/usr/lib/n?vim,||g;
+    s|[^,]*flatpak[^,]*,||g;
+    s|[^,]*matchit[^,]*,||g;
+
     ' | sort
 }
 
