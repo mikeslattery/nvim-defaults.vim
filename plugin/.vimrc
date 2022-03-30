@@ -150,7 +150,10 @@ function! Stdpath(id)
   endif
 endfunction
 
-let s:datadir    = Stdpath('data')
+let s:datadir   = Stdpath('data')
+let s:configdir = Stdpath('config')
+
+" backupdir isn't set exactly like neovim, because it's odd.
 let &backupdir = s:datadir . '/backup//'
 let &viewdir   = s:datadir . '/view//'
 if ! executable('nvim')
@@ -174,11 +177,16 @@ endfunction
 autocmd VimEnter * call s:MakeDirs()
 
 " Add user config dirs to search paths
-let s:configdir   = Stdpath('config')
-let s:pathprefix  = s:configdir . ',' . s:datadir . '/site,'
-let s:pathpostfix = ',' . s:configdir . '/after,' . s:datadir . '/site/after'
-let &packpath     = substitute(s:pathprefix . &packpath .    s:pathpostfix, ','.$HOME.'\/\.vim\(/after\)\?', '', 'g')
-let &runtimepath  = substitute(s:pathprefix . &runtimepath . s:pathpostfix, ','.$HOME.'\/\.vim\(/after\)\?', '', 'g')
+function! s:fixpath(path)
+  let l:pathprefix  = s:configdir . ',' . s:datadir . '/site,'
+  let l:pathpostfix = ',' . s:configdir . '/after,' . s:datadir . '/site/after'
+  let l:fullpath = l:pathprefix . a:path . l:pathpostfix
+  " Remove .vim
+  return substitute(l:fullpath, ','.$HOME.'\/\.vim\(/after\)\?', '', 'g')
+endfunction
+
+let &packpath     = s:fixpath(&packpath)
+let &runtimepath  = s:fixpath(&runtimepath)
 
 " DEFAULT-MAPPINGS
 " :help default-mappings

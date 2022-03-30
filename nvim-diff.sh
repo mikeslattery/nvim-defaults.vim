@@ -21,6 +21,15 @@ cleanit() {
     s/^no(.*)/\1=off/;
     s|^ *||;
 
+    # Remove system paths
+    /^(packpath|runtimepath)=/ {
+      s|/etc/xdg/nvim(/after)?,||g;
+      s|/usr/(local/)?share/n?vim(/vimfiles)?(/vim82)?(/runtime)?(/site)?(/after)?,||g;
+      s|/usr/lib/n?vim,||g;
+      s|[^,]*flatpak[^,]*,||g;
+      s|[^,]*matchit[^,]*,||g;
+    }
+
     # path differences
     s|/tmp/\.mount_nvim[^/]*/|/|g;
     s|/vimswap|/swap|;
@@ -47,16 +56,8 @@ cleanit() {
     /^printexpr=/ d;
     /^helpfile=/ d;
 
-    # Vim has odd defaults, but we do not care
-    # comment out for more truthful diff.
-    s/backupdir=\.,/backupdir=/;
-
-    # paths can be different
-    s|/etc/xdg/nvim(/after)?,||g;
-    s|/usr/(local/)?share/n?vim(/vimfiles)?(/vim82)?(/runtime)?(/site)?(/after)?,||g;
-    s|/usr/lib/n?vim,||g;
-    s|[^,]*flatpak[^,]*,||g;
-    s|[^,]*matchit[^,]*,||g;
+    # Neovim has an odd default for backupdir
+    s/(backupdir=)\.,/\1/;
 
     ' | sort
 }
