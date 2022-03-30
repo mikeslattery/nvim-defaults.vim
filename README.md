@@ -4,13 +4,14 @@ Sets options in Vim to the sames as [Neovim's defaults](https://neovim.io/doc/us
 
 ## Features
 
-* Neovim `set` values
-* True color support in Tmux with `termguicolors`
-* `runtimepath` extended for Neovim directory structure
-* Set `$XDG_*` values
-* `Stdpath()` function equivalent to Neovim's `stdpath()`
+* Sources `~/.config/nvim/init.vim` and sets `$MYVIMRC` to it.
+* Neovim `set` default values
+* `runtimepath` and other paths extended for Neovim directory structure
 * Neovim default mappings, including `Q`
 * Default plugins (Man, matchit, syntax)
+* `Stdpath()` function equivalent to Neovim's `stdpath()`
+* True color support in Tmux with `termguicolors`
+* Set `$XDG_*` values
 
 ### But Why?
 
@@ -60,7 +61,6 @@ In summary, I can't make Vim into Neovim.
 * Make use of `if has('nvim')` to conditionally skip code in your configuration that only will work in Neovim.
 * Lua is not supported.
 * Plugins written specifically to only work for Neovim, will continue to *not* work for Vim.
-* Don't expect Vim to magically work exactly like Neovim.  There are a lot of things out of our control.
 * This is not tested with Windows.
 
 ### Reporting Issues and Contributing
@@ -80,3 +80,4 @@ In summary, I can't make Vim into Neovim.
 * <https://github.com/vim/vim/blob/master/runtime/defaults.vim>
 * <https://github.com/neovim/neovim/blob/master/src/nvim/os/stdpaths.c>
 * Options were partially determined by running `nvim-diff.sh`
+* If you want to install `nvim` on a Linux server, `install-nvim.sh` is supplied as an example.
