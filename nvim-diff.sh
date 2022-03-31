@@ -37,7 +37,7 @@ cleanit() {
     s|^(shadafile)=$|\1=~/.local/share/nvim/shada/main.shada|;
 
     # Naming differences
-    s|main.shada|viminfo|g;
+    s|main\.shada|viminfo|g;
     s|shada|viminfo|g;
 
     # option values not in both
@@ -65,7 +65,7 @@ cleanit() {
 # only include options that exist in both
 cleaned() {
   cleanit "$1" | grep -f <(cleanit "$2" | sed -r 's/=.*$//; /^$/d; s/^/^/; s/$/\\b/;')
-  # this isn't efficient, but who care?
+  # this isn't efficient, but who cares?
 }
 
 vim  -u NONE -c 'source plugin/.vimrc' \
@@ -74,7 +74,6 @@ nvim -u NONE \
   +'redir! > /tmp/ns.txt | silent set! all | redir END | qa'
 
 diff -u0 <(cleaned /tmp/vs.txt /tmp/ns.txt) <(cleaned /tmp/ns.txt /tmp/vs.txt) | \
-  sed '/^@@/d' | \
-  nvim --clean - -R '+set ft=diff'
+  sed '1,2 d; /^@@/d;'
 
 rm -f /tmp/vs.txt /tmp/ns.txt

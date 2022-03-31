@@ -179,7 +179,7 @@ autocmd VimEnter * call s:MakeDirs()
 " Add user config dirs to search paths
 function! s:fixpath(path)
   let l:pathprefix  = s:configdir . ',' . s:datadir . '/site,'
-  let l:pathpostfix = ',' . s:configdir . '/after,' . s:datadir . '/site/after'
+  let l:pathpostfix = ',' . s:datadir . '/site/after,' . s:configdir . '/after'
   let l:fullpath = l:pathprefix . a:path . l:pathpostfix
   " Remove .vim
   return substitute(l:fullpath, ','.$HOME.'\/\.vim\(/after\)\?', '', 'g')
