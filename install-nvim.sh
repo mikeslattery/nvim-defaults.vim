@@ -8,6 +8,9 @@
 # because a locked-down server is a common reason
 # people might still be forced to use regular Vim.
 
+# This extracts the image,
+# instead of mounting it, as that might not be allowed on servers.
+
 set -eu
 
 has() { command -v "$@" >/dev/null 2>&1; }
@@ -27,7 +30,15 @@ download() {
 [ "$(uname -s)" = "Linux" ] || die "Not Linux"
 
 nvim="$HOME/.local/bin/nvim"
+image="$HOME/.local/nvim/AppImage"
 nvimurl="https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage"
 
-download "$nvimurl" "$nvim"
-chmod u+x "$nvim"
+main() {
+  download "$nvimurl" "$image"
+  chmod    u+x        "$image"
+
+  "$image" --appimage-extract ~/.local/nvim
+  ln -sfn ~/.local/nvim/squashfs-root/AppRun "$nvim"
+}
+
+main "$@"
