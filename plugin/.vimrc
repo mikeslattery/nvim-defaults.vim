@@ -45,7 +45,7 @@ set autoread
 set background=dark
 set belloff=all
 set cdpath=,.,~/src,~/
-set clipboard=
+set clipboard=unnamed,unnamedplus
 set cmdheight=1
 set complete=.,w,b,u,t
 set cscopeverbose
@@ -101,7 +101,7 @@ endif
 
 " DIRECTORIES
 
-" These don't always necessarily exist in neovim,
+" These don't always necessarily exist in Neovim,
 " but are convenient to have for Stdpath()
 
 if ! exists('$XDG_CACHE_HOME')
@@ -153,7 +153,7 @@ endfunction
 let s:datadir   = Stdpath('data')
 let s:configdir = Stdpath('config')
 
-" backupdir isn't set exactly like neovim, because it's odd.
+" backupdir isn't set exactly like Neovim, because it's odd.
 let &backupdir = s:datadir . '/backup//'
 let &viewdir   = s:datadir . '/view//'
 if ! executable('nvim')

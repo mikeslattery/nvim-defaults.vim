@@ -5,8 +5,8 @@ Sets options in Vim to the sames as [Neovim's defaults](https://neovim.io/doc/us
 ## Features
 
 * Sources `~/.config/nvim/init.vim` and sets `$MYVIMRC` to it.
-* Neovim `set` default values
 * `runtimepath` and other paths extended for Neovim directory structure
+* `set` default values similar to Neovim's
 * Neovim default mappings, including `Q`
 * Default plugins (Man, matchit, syntax)
 * `Stdpath()` function equivalent to Neovim's `stdpath()`
