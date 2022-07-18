@@ -198,7 +198,7 @@ inoremap <C-W> <C-G>u<C-W>
 
 " Implement Q
 let g:qreg='@'
-function! RecordAndStop()
+function! RecordOrStop()
   if reg_recording() == ''
     echo 'Enter register to record to: '
     let g:qreg=getcharstr()
@@ -211,8 +211,9 @@ function! RecordAndStop()
   endif
 endfunction
 
-command! MapQ noremap q :call RecordAndStop()<cr>
-noremap Q :execute 'normal! @'.g:qreg<cr>
+" :MapQ will activate the Q mapping
+command! MapQ noremap q <cmd>call RecordOrStop()<cr>
+noremap Q <cmd>execute 'normal! @'.g:qreg<cr>
 
 " DEFAULT PLUGINS
 
